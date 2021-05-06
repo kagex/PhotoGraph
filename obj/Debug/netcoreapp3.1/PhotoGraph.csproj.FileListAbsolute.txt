@@ -1,0 +1,17 @@
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.exe
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\Resources\image-template.jpg
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.deps.json
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.runtimeconfig.json
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.runtimeconfig.dev.json
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.dll
+E:\Users\krang\Documents\GitHub\PhotoGraph\bin\Debug\netcoreapp3.1\PhotoGraph.pdb
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.csprojAssemblyReference.cache
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.Form1.resources
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.Properties.Resources.resources
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.csproj.GenerateResource.cache
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.AssemblyInfoInputs.cache
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.AssemblyInfo.cs
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.csproj.CoreCompileInputs.cache
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.dll
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.pdb
+E:\Users\krang\Documents\GitHub\PhotoGraph\obj\Debug\netcoreapp3.1\PhotoGraph.genruntimeconfig.cache
