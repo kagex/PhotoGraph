@@ -47,8 +47,9 @@ namespace PhotoGraph
             ToolStripMenuItem filterItem = new ToolStripMenuItem("Фильтр");
             filterItem.DropDownItems.Add("Без фильтра");
             filterItem.DropDownItems.Add("Сепия");
-            filterItem.DropDownItems.Add("Winter");
-            filterItem.DropDownItems.Add("Gray");
+            filterItem.DropDownItems.Add("Зима");
+            filterItem.DropDownItems.Add("Ч/Б");
+            filterItem.DropDownItems.Add("Негатив");
             filterItem.DropDownItems.Add("Spike");
             filterItem.DropDownItems.Add("Flash");
             filterItem.DropDownItems.Add("Frozen");
@@ -58,6 +59,10 @@ namespace PhotoGraph
 
             filterItem.DropDownItemClicked += FilterItem_DropDownItemClicked; ;
             menuStrip1.Items.Add(filterItem);
+
+            ToolStripMenuItem corItem = new ToolStripMenuItem("Коррекция");
+            corItem.Click += CorItem_Click;
+            menuStrip1.Items.Add(corItem);
 
             ToolStripMenuItem resetItem = new ToolStripMenuItem("Сброс изменений");
             resetItem.Click += ResetItem_Click;
@@ -213,6 +218,37 @@ namespace PhotoGraph
                 g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
 
                 g.Dispose(); 
+                pictureBox1.Image = bmpInverted;
+
+            }
+        }
+
+        void negative()
+        {
+            if (!opened)
+            {
+                MessageBox.Show("Отсутствует изображение для работы");
+            }
+            else
+            {
+
+                Image img = pictureBox1.Image;
+                Bitmap bmpInverted = new Bitmap(img.Width, img.Height);
+
+                ImageAttributes ia = new ImageAttributes();
+                ColorMatrix cmPicture = new ColorMatrix(new float[][]
+                {
+                     new float[]{-1, 0, 0, 0, 0},
+                     new float[]{0, -1, 0, 0, 0},
+                     new float[]{0, 0, -1, 0, 0},
+                     new float[]{0, 0, 0, 1, 0},
+                     new float[]{1, 1, 1, 1, 1}
+                });
+                ia.SetColorMatrix(cmPicture);
+                Graphics g = Graphics.FromImage(bmpInverted);
+                g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+
+                g.Dispose();
                 pictureBox1.Image = bmpInverted;
 
             }
@@ -455,11 +491,14 @@ namespace PhotoGraph
                 case "Сепия":
                     sepia();
                     break;
-                case "Winter":
+                case "Зима":
                     winter();
                     break;
-                case "Gray":
+                case "Ч/Б":
                     gray();
+                    break;
+                case "Негатив":
+                    negative();
                     break;
                 case "Spike":
                     spike();
@@ -498,6 +537,7 @@ namespace PhotoGraph
 
         private void AboutItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("СПБГУАП 2021 - Шаталова Дарья и Гловацкий Александр");
         }
 
         private void bar_Scroll(object sender, EventArgs e)
@@ -532,6 +572,13 @@ namespace PhotoGraph
             Bitmap bitmap1 = (Bitmap)pictureBox1.Image;
             bitmap1.RotateFlip(RotateFlipType.RotateNoneFlipX);
             pictureBox1.Image = bitmap1;
+        }
+
+        private void CorItem_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Owner = this;
+            f.ShowDialog();
         }
     }
 }

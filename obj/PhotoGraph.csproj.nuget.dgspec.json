@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Users\\krang\\Dropbox\\проекты\\Фоторедактор\\PhotoGraph\\PhotoGraph.csproj": {}
+    "E:\\Users\\krang\\Documents\\GitHub\\PhotoGraph\\PhotoGraph.csproj": {}
   },
   "projects": {
-    "E:\\Users\\krang\\Dropbox\\проекты\\Фоторедактор\\PhotoGraph\\PhotoGraph.csproj": {
+    "E:\\Users\\krang\\Documents\\GitHub\\PhotoGraph\\PhotoGraph.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Users\\krang\\Dropbox\\проекты\\Фоторедактор\\PhotoGraph\\PhotoGraph.csproj",
+        "projectUniqueName": "E:\\Users\\krang\\Documents\\GitHub\\PhotoGraph\\PhotoGraph.csproj",
         "projectName": "PhotoGraph",
-        "projectPath": "E:\\Users\\krang\\Dropbox\\проекты\\Фоторедактор\\PhotoGraph\\PhotoGraph.csproj",
+        "projectPath": "E:\\Users\\krang\\Documents\\GitHub\\PhotoGraph\\PhotoGraph.csproj",
         "packagesPath": "C:\\Users\\krang\\.nuget\\packages\\",
-        "outputPath": "E:\\Users\\krang\\Dropbox\\проекты\\Фоторедактор\\PhotoGraph\\obj\\",
+        "outputPath": "E:\\Users\\krang\\Documents\\GitHub\\PhotoGraph\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,6 +45,12 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "ImageProcessor": {
+              "target": "Package",
+              "version": "[2.9.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -63,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
