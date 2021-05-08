@@ -30,8 +30,8 @@ namespace PhotoGraph
         private void brightness_trackBar_Scroll(object sender, EventArgs e)
         {
             Form1 main = this.Owner as Form1;
-            main.pictureBox1.Image = changeBrightness(bitmap, (float)(brightnessBar.Value / 5));
-            brightnessValue.Text = (brightnessBar.Value).ToString();
+            main.pictureBox1.Image = changeBrightness(bitmap, (float)(brightnessBar.Value));
+            brightnessValue.Text = (Math.Round((brightnessBar.Value/255.0f)*100)).ToString();
             main.pictureBox1.Refresh();
         }
 
@@ -48,11 +48,11 @@ namespace PhotoGraph
             float b = (float)brightness / 255.0f;
             ColorMatrix cm = new ColorMatrix(new float[][]
                 {
-                    new float[] {1, 0, 0, 0, 0},
-                    new float[] {0, 1, 0, 0, 0},
-                    new float[] {0, 0, 1, 0, 0},
+                    new float[] {1+b, 0, 0, 0, 0},
+                    new float[] {0, 1+b, 0, 0, 0},
+                    new float[] {0, 0, 1+b, 0, 0},
                     new float[] {0, 0, 0, 1, 0},
-                    new float[] {b, b, b, 1, 1},
+                    new float[] {0, 0, 0, 0, 1},
                 });
             ImageAttributes attributes = new ImageAttributes();
             attributes.SetColorMatrix(cm);
@@ -84,11 +84,11 @@ namespace PhotoGraph
 
         private Bitmap changeBlur(Image image, int blur) // Изменение размытия 
         {
-            if (blur > 0)
+            if (blur > 0 & blur <= 100)
             {
                 var factory = new ImageFactory(preserveExifData: true);
                 factory.Load(bitmap);
-                GaussianLayer layer = new GaussianLayer(blur);
+                GaussianLayer layer = new GaussianLayer (blur/4);
                 GaussianBlur blur1 = new GaussianBlur { DynamicParameter = layer };
                 return (Bitmap)blur1.ProcessImage(factory);
             }
@@ -134,8 +134,7 @@ namespace PhotoGraph
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
             {
                 e.Handled = true;
             }

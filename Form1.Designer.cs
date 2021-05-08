@@ -103,7 +103,7 @@ namespace PhotoGraph
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.92937F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.07063F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
@@ -133,7 +133,7 @@ namespace PhotoGraph
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 47);
+            this.label2.Size = new System.Drawing.Size(178, 47);
             this.label2.TabIndex = 0;
             this.label2.Text = "Red";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,7 +147,7 @@ namespace PhotoGraph
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(3, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 47);
+            this.label3.Size = new System.Drawing.Size(178, 47);
             this.label3.TabIndex = 1;
             this.label3.Text = "Green";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,7 +161,7 @@ namespace PhotoGraph
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(3, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 38);
+            this.label4.Size = new System.Drawing.Size(178, 38);
             this.label4.TabIndex = 2;
             this.label4.Text = "Blue";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,33 +169,33 @@ namespace PhotoGraph
             // redBar
             // 
             this.redBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.redBar.Location = new System.Drawing.Point(190, 3);
+            this.redBar.Location = new System.Drawing.Point(187, 3);
             this.redBar.Maximum = 50;
             this.redBar.Minimum = -15;
             this.redBar.Name = "redBar";
-            this.redBar.Size = new System.Drawing.Size(477, 41);
+            this.redBar.Size = new System.Drawing.Size(470, 41);
             this.redBar.TabIndex = 3;
             this.redBar.Scroll += new System.EventHandler(this.bar_Scroll);
             // 
             // greenBar
             // 
             this.greenBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.greenBar.Location = new System.Drawing.Point(190, 50);
+            this.greenBar.Location = new System.Drawing.Point(187, 50);
             this.greenBar.Maximum = 50;
             this.greenBar.Minimum = -15;
             this.greenBar.Name = "greenBar";
-            this.greenBar.Size = new System.Drawing.Size(477, 41);
+            this.greenBar.Size = new System.Drawing.Size(470, 41);
             this.greenBar.TabIndex = 4;
             this.greenBar.Scroll += new System.EventHandler(this.bar_Scroll);
             // 
             // blueBar
             // 
             this.blueBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blueBar.Location = new System.Drawing.Point(190, 97);
+            this.blueBar.Location = new System.Drawing.Point(187, 97);
             this.blueBar.Maximum = 50;
             this.blueBar.Minimum = -15;
             this.blueBar.Name = "blueBar";
-            this.blueBar.Size = new System.Drawing.Size(477, 32);
+            this.blueBar.Size = new System.Drawing.Size(470, 32);
             this.blueBar.TabIndex = 5;
             this.blueBar.Scroll += new System.EventHandler(this.bar_Scroll);
             // 
@@ -203,7 +203,7 @@ namespace PhotoGraph
             // 
             this.redValue.AutoSize = true;
             this.redValue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.redValue.Location = new System.Drawing.Point(673, 0);
+            this.redValue.Location = new System.Drawing.Point(663, 0);
             this.redValue.Name = "redValue";
             this.redValue.Size = new System.Drawing.Size(19, 47);
             this.redValue.TabIndex = 6;
@@ -214,7 +214,7 @@ namespace PhotoGraph
             // 
             this.greenValue.AutoSize = true;
             this.greenValue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.greenValue.Location = new System.Drawing.Point(673, 47);
+            this.greenValue.Location = new System.Drawing.Point(663, 47);
             this.greenValue.Name = "greenValue";
             this.greenValue.Size = new System.Drawing.Size(19, 47);
             this.greenValue.TabIndex = 7;
@@ -225,7 +225,7 @@ namespace PhotoGraph
             // 
             this.blueValue.AutoSize = true;
             this.blueValue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.blueValue.Location = new System.Drawing.Point(673, 94);
+            this.blueValue.Location = new System.Drawing.Point(663, 94);
             this.blueValue.Name = "blueValue";
             this.blueValue.Size = new System.Drawing.Size(19, 38);
             this.blueValue.TabIndex = 8;

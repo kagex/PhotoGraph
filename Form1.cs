@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PhotoGraph
@@ -17,7 +11,7 @@ namespace PhotoGraph
         public Form1()
         {
             InitializeComponent();
-            openFileDialog1.FileName = "Resources/image-template.jpg";
+            //openFileDialog1.FileName = "Resources/image-template.jpg";
 
             ToolStripMenuItem rightRotate = new ToolStripMenuItem("Повернуть изображение на 90 градусов");
             ToolStripMenuItem leftRotate = new ToolStripMenuItem("Повернуть изображение на -90 градусов");
@@ -50,6 +44,9 @@ namespace PhotoGraph
             filterItem.DropDownItems.Add("Зима");
             filterItem.DropDownItems.Add("Ч/Б");
             filterItem.DropDownItems.Add("Негатив");
+            filterItem.DropDownItems.Add("Оттенки красного");
+            filterItem.DropDownItems.Add("Оттенки зеленого");
+            filterItem.DropDownItems.Add("Оттенки синего");
             filterItem.DropDownItems.Add("Spike");
             filterItem.DropDownItems.Add("Flash");
             filterItem.DropDownItems.Add("Frozen");
@@ -74,13 +71,14 @@ namespace PhotoGraph
         }
 
         Image image;
+        Image backupImage = Image.FromFile("Resources/image-template.jpg");
         Boolean opened = true;
 
         void reload()
         {
             if (opened)
             {
-                image = Image.FromFile(openFileDialog1.FileName);
+                image = backupImage;
                 pictureBox1.Image = image;
                 opened = true;
             } 
@@ -88,12 +86,15 @@ namespace PhotoGraph
 
         void openImage()
         {
-            DialogResult dialogResult = openFileDialog1.ShowDialog();
-            if (dialogResult == DialogResult.OK)
+            OpenFileDialog dialogResult = new OpenFileDialog();
+            dialogResult.Filter = "Изображения (*.BMP;*.JPG;*.PNG;*.GIF)|*.BMP;*.JPG;*.PNG;*.GIF|All files (*.*)|*.*";
+            if (dialogResult.ShowDialog() == DialogResult.OK)
             {
-                image = Image.FromFile(openFileDialog1.FileName);
+                image = Image.FromFile(dialogResult.FileName);
+                backupImage = image;
                 pictureBox1.Image = image;
                 opened = true;
+                dialogResult.Dispose();
             }
         }
 
@@ -102,14 +103,20 @@ namespace PhotoGraph
             if (opened)
             {
                 SaveFileDialog sfd = new SaveFileDialog(); 
-                sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+                sfd.Filter = "Изображение в формате JPEG(JPG)|*.jpeg;*.jpg|" +
+                              "Изображение в формате BMP|*.bmp|" +
+                              "Изображение в формате PNG|*.png|" +
+                              "Все файлы (*.*)|*.*";
                 ImageFormat format = ImageFormat.Png;
-                if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     string ext = Path.GetExtension(sfd.FileName);
                     switch (ext)
                     {
                         case ".jpg":
+                            format = ImageFormat.Jpeg;
+                            break;
+                        case ".jpeg":
                             format = ImageFormat.Jpeg;
                             break;
                         case ".png":
@@ -118,11 +125,16 @@ namespace PhotoGraph
                         case ".bmp":
                             format = ImageFormat.Bmp;
                             break;
+                        case ".gif":
+                            format = ImageFormat.Gif;
+                            break;
                     }
-                    pictureBox1.Image.Save(sfd.FileName, format);
+                    Image tempImg = pictureBox1.Image;
+                    tempImg.Save(sfd.FileName, format);
+                    tempImg.Dispose();
                 }
             }
-            else { MessageBox.Show("Отсутсвует изображение для сохранения"); }
+            else { MessageBox.Show("Отсутствует изображение для сохранения"); }
 
         }
 
@@ -269,11 +281,11 @@ namespace PhotoGraph
                 ImageAttributes ia = new ImageAttributes();
                 ColorMatrix cmPicture = new ColorMatrix(new float[][]
                 {
-                    new float[]{0.299f, 0.299f, 0.299f, 0, 0},
-                    new float[]{0.587f, 0.587f, 0.587f, 0, 0},
-                    new float[]{0.114f, 0.114f, 0.114f, 0, 0},
-                    new float[]{0, 0, 0, 1, 0},
-                    new float[]{0, 0, 0, 0, 0}
+                    new float[] {.3f, .3f, .3f, 0, 0},
+                    new float[] {.59f, .59f, .59f, 0, 0},
+                    new float[] {.11f, .11f, .11f, 0, 0},
+                    new float[] {0, 0, 0, 1, 0},
+                    new float[] {0, 0, 0, 0, 1}
                 });
                 ia.SetColorMatrix(cmPicture);
                 Graphics g = Graphics.FromImage(bmpInverted);
@@ -499,6 +511,21 @@ namespace PhotoGraph
                     break;
                 case "Негатив":
                     negative();
+                    break;
+                case "Оттенки красного":
+                    greenBar.Value = -10;
+                    blueBar.Value = -10;
+                    rgb();
+                    break;
+                case "Оттенки зеленого":
+                    redBar.Value = -10;
+                    blueBar.Value = -10;
+                    rgb();
+                    break;
+                case "Оттенки синего":
+                    redBar.Value = -10;
+                    greenBar.Value = -10;
+                    rgb();
                     break;
                 case "Spike":
                     spike();
